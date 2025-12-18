@@ -38,6 +38,7 @@ RULES:
 2. If the answer is not in the Context, strictly output: "The document does not provide a clear answer."
 3. Answer directly and naturally. Do NOT start with "In this document", "The text states", or "According to the document".
 4. If the context contains multiple relevant points, summarize them clearly.
+5. **Contextual Accuracy:** Ensure you attribute actions or properties to the correct subject. If the text discusses multiple distinct subjects (e.g., different definitions, time periods, or methods), do not mix up their descriptions.
 
 EXAMPLE 1:
 Context: "The sky is blue because of Rayleigh scattering."
@@ -59,6 +60,7 @@ Question:
 <|im_start|>assistant
 """
 )
+
 
 # -----------------------------
 # LangGraph Node
