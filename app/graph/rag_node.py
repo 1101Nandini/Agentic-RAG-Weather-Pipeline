@@ -69,7 +69,7 @@ def rag_node(state: Dict) -> Dict:
     query = state.get("query", "").strip()
     
     # 1. Retrieval
-    retriever = HybridRetriever(dense_k=10, final_k=5)
+    retriever = HybridRetriever(dense_k=15, final_k=8)
     retrieved_docs = retriever.retrieve(query)
     
     if not retrieved_docs:

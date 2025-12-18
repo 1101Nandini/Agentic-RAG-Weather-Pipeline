@@ -62,7 +62,7 @@ def load_and_split_pdf(
     # Split documents into chunks
     splitter = RecursiveCharacterTextSplitter(
     chunk_size=1000,          # bigger chunks
-    chunk_overlap=100,        # reduce overlap
+    chunk_overlap=300,        # reduce overlap
     separators=[
         "\n\n",               
         "\n",

@@ -59,7 +59,7 @@ class HybridRetriever:
     4. Rerank the merged list using a Cross-Encoder for maximum relevance.
     """
 
-    def __init__(self, dense_k: int = 6, final_k: int = 2):
+    def __init__(self, dense_k: int = 15, final_k: int = 8):
         """
         Args:
             dense_k (int): Number of docs to fetch from EACH retriever (Vector & BM25).
