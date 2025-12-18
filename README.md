@@ -195,7 +195,7 @@ https://www.loom.com/i/1480f1f5993844838e1928b96e202676
 **1. Operational Health Dashboard**
 *This view tracks the total number of traces, latency, and error rates over time. It provides high-level visibility into the system's stability and usage patterns.*
 
-![Operational Dashboard]
+[Operational Dashboard]
 
 https://www.loom.com/i/318bf17e8c7b4296aa91eeba547e6293
 
@@ -203,9 +203,27 @@ https://www.loom.com/i/318bf17e8c7b4296aa91eeba547e6293
 **2. Quality Metrics Dashboard (Hallucination Tracking)**
 *This specialized view tracks the "Hallucination" score across all runs. The visible spikes clearly mark the moments where logic errors were detected. The subsequent return to baseline (0.00) confirms that the Prompt Engineering and Retrieval tuning fixes were effective.*
 
-![Quality Dashboard]
+[Quality Dashboard]
 
 https://www.loom.com/i/cab1b01dd5314fcc866d50c041c9cb3a
+
+
+**Evaluation Methodology (LLM-as-a-Judge)**
+To ensure rigorous quality control, I configured a custom **Reference-Free Hallucination Evaluator** in LangSmith using `gemini-2.5-flash`.
+
+**The Protocol:**
+Instead of simple keyword matching, the system uses an LLM acting as an expert data labeler. It evaluates every RAG response against the retrieved context using a strict boolean rubric:
+* **TRUE (1):** Output contains unsupported claims or contradictions.
+* **FALSE (0):** Output is fully verifiable from the input context.
+
+[Evaluator Config]
+
+https://www.loom.com/i/03a37052bf5e4f1586bf45c72efb25ea
+
+*(This configuration ensures that even subtle logic errors are flagged for review)*
+
+
+
 
 
 ## Project Structure
