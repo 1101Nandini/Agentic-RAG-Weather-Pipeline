@@ -129,17 +129,29 @@ This document covers:
 **Note:** You can replace this file with any other PDF by placing it in the `data/` directory and restarting the application.
 
 
-### Testing
-The project includes comprehensive unit tests using pytest and unittest.mock.
+### Testing & Reliability
+
+The project includes comprehensive unit tests using `pytest` .
+
+
+**Test Coverage:**
+* **`test_graph.py`**: Validates the LangGraph state transitions and decision node logic.
+* **`test_rag.py`**: Mocks the Vector Database to verify retrieval and prompt construction.
+* **`test_weather.py`**: Tests the API handler and error management for weather requests.
+
+**Results:**
+
+All 5 critical test cases passed successfully.
+
+[Unit Test Results]
+
+https://www.awesomescreenshot.com/image/57964558?key=6267b12b7672b158674ac72260ac137b
+
+*(Screenshot showing successful execution of the test suite)*
 
 Run the test suite:
 **pytest**
 
-### What is tested?
-
-- Graph Routing: Ensures queries route to the correct node.
-- RAG Logic: Verifies retrieval returns relevant documents.
-- Weather API: Mocks API responses to test success/failure handling without using credits.
 
 ## Design Decisions & Trade-offs
 
