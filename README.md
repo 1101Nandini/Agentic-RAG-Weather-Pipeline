@@ -156,7 +156,59 @@ Pure vector search often fails on specific domain keywords. I implemented **Hybr
 * **Sparse (BM25):** Captures exact keyword matches ("SECTION 3.2").
 * **Reranking:** A Cross-Encoder filters the combined results to ensure the LLM only sees the most relevant context, reducing hallucinations.
 
-### Project Structure
+
+
+##  Demo & Evaluation
+
+
+### Streamlit UI Screenshot
+
+https://www.loom.com/i/8d3536681ab14145b0e0c1fac5edb6eb
+
+
+### LangSmith Tracing
+
+The agent's decision-making process is fully observable:
+
+**LangGraph Execution Trace**
+
+**1. Architectural Execution**
+*The trace below visualizes the **LangGraph Waterfall** (left panel). It proves the conditional routing logic is active: the agent correctly identifies the intent, bypasses the weather tool, and executes the RAG pipeline.*
+
+[LangGraph Architecture]  
+
+https://www.loom.com/i/2f937b58bc014de6bc1d37459010b4b0
+
+
+**2. Quality Verification**
+*This trace details the final response data. Crucially, the **Hallucination Evaluator** (right panel) has analyzed the output against the retrieved documents and assigned a score of **0.00**, certifying a hallucination-free response.*
+
+[Verified Trace]  
+
+https://www.loom.com/i/16990a117e3f4a9fb9157d3813acd23d
+
+https://www.loom.com/i/1480f1f5993844838e1928b96e202676
+
+
+**System Monitoring & Reliability**
+
+**1. Operational Health Dashboard**
+*This view tracks the total number of traces, latency, and error rates over time. It provides high-level visibility into the system's stability and usage patterns.*
+
+![Operational Dashboard]
+
+https://www.loom.com/i/318bf17e8c7b4296aa91eeba547e6293
+
+
+**2. Quality Metrics Dashboard (Hallucination Tracking)**
+*This specialized view tracks the "Hallucination" score across all runs. The visible spikes clearly mark the moments where logic errors were detected. The subsequent return to baseline (0.00) confirms that the Prompt Engineering and Retrieval tuning fixes were effective.*
+
+![Quality Dashboard]
+
+https://www.loom.com/i/cab1b01dd5314fcc866d50c041c9cb3a
+
+
+## Project Structure
 
 
 ```text
@@ -172,3 +224,4 @@ Pure vector search often fails on specific domain keywords. I implemented **Hybr
 ├── Dockerfile          # Container config
 ├── requirements.txt    # Python dependencies
 └── README.md           # Documentation
+
